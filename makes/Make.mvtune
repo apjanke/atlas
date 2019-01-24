@@ -1,3 +1,5 @@
+# Make.mvtune
+
 include Make.inc
 mySRCdir = $(SRCdir)/tune/blas/gemv
 mvSRCdir = $(SRCdir)/src/blas/gemv
@@ -104,8 +106,9 @@ tstlib : ststlib dtstlib ctstlib ztstlib
 force_build :
 
 res/L1CacheSize : $(SYSdir)/res/L1CacheSize
+	rm -f res/L1CacheSize
 	cd $(SYSdir) ; $(MAKE) res/L1CacheSize
-	ln -s $(SYSdir)/res/L1CacheSize res/L1CacheSize
+	ln -s $(SYSdir)/res/L1CacheSize res/L1CacheSize # from Make.mvtune
 
 ATL_gemv.c :
 	cp $(mySRCdir)/ATL_gemv.c .

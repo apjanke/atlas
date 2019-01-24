@@ -1,3 +1,5 @@
+# Make.mmtune
+
 include Make.inc
 mySRCdir = $(SRCdir)/tune/blas/gemm
 
@@ -13,8 +15,9 @@ $(SYSdir)/res/L1CacheSize :
 	cd $(SYSdir) ; $(MAKE) res/L1CacheSize
 	
 RunL1 : force_build
+	rm -f res/L1CacheSize
 	$(MAKE) $(SYSdir)/res/L1CacheSize 
-	ln -s $(SYSdir)/res/L1CacheSize res/L1CacheSize
+	ln -s $(SYSdir)/res/L1CacheSize res/L1CacheSize # from Make.mmtune
 
 RunTLB : 
 	cd $(SYSdir) ; $(MAKE) RunTLB
